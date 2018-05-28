@@ -1,10 +1,10 @@
 <pre>
-  BIP: 2
+  NPIP: 2
   Layer: Consensus (hard fork)
   Title: OP_COINSTAKE
   Author: alex v <alex@nav.community>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:NPIP-0002
+  Comments-URI: https://github.com/navcoin/npips/wiki/Comments:NPIP-0002
   Status: Draft
   Type: Standards Track
   Created: 2018-05-28
@@ -86,4 +86,4 @@ That is why the introduction of the new consensus rules is proposed conditioned 
 
 ==Reference Implementation==
 
-https://github.com/NAVCoin/navcoin-core/tree/v4.2.0-cold-staking
+https://github.com/navcoin/navcoin-core/tree/v4.2.0-cold-staking
