@@ -1,7 +1,7 @@
 <pre>
   NPIP: 1
   Title: NPIP Purpose and Guidelines
-  Author: Alex V <alex@encrypt-s.com>
+  Author: Alex V <alex@nav.community>
   Comments-Summary: No comments yet.
   Comments-URI: https://github.com/navcoin/npips/wiki/Comments:NPIP-0001
   Status: Draft
@@ -144,11 +144,11 @@ If you are interested in assuming ownership of a NPIP, send a message asking to 
 
 ==NPIP Editors==
 
-The current NPIP editor is Alex V who can be contacted at [[mailto:alex@encrypt-s.com|alex@encrypt-s.com]].
+The current NPIP editor is Alex V who can be contacted at [[mailto:alex@nav.community|alex@nav.community]].
 
 ==NPIP Editor Responsibilities & Workflow==
 
-All NPIP-related correspondence should be sent (or CC'd) to alex@encrypt-s.com.
+All NPIP-related correspondence should be sent (or CC'd) to alex@nav.community.
 
 For each new NPIP that comes in an editor does the following:
 
