@@ -1,0 +1,89 @@
+<pre>
+  BIP: 2
+  Layer: Consensus (hard fork)
+  Title: OP_COINSTAKE
+  Author: alex v <alex@nav.community>
+  Comments-Summary: No comments yet.
+  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:NPIP-0002
+  Status: Draft
+  Type: Standards Track
+  Created: 2018-05-28
+</pre>
+
+==Abstract==
+
+This NPIP describes a new opcode (OP_COINSTAKE) for the NavCoin scripting language and a new standard transaction type using the new opcode.
+
+==Motivation==
+
+To provide extra security to participants in the staking process in the NavCoin network.
+
+==Specification==
+
+OP_COINSTAKE will be defined as the opcode 0xC6, and will behave as follows:
+
+* When executed during transaction verification, it will push a boolean to the top of the stack indicating whether the transaction spending the coins is of the type CoinStake or not.
+
+A CoinStake transaction is defined as having:
+
+* 1 or more valid inputs.
+* Its first output nullified (0 value and 0x0 as scriptPubKey).
+* 2 or more outputs.
+
+A new standard transaction type 'Pay to Cold Staking Script (P2CSS)' is defined:
+
+    IF OP_COINSTAKE
+      OP_DUP OP_HASH160 <pubKeyHash1> OP_EQUALVERIFY OP_CHECKSIG
+    ELSE
+      OP_DUP OP_HASH160 <pubKeyHash2> OP_EQUALVERIFY OP_CHECKSIG
+    ENDIF
+
+Where:
+
+* pubKeyHash1 is the hash of the public key authorised to stake.
+* pubKeyHash2 is the hash of the public key authorised to spend.
+
+A new address type 'Cold Staking Address' is defined:
+
+* As being prefixed by 'X' in mainnet / 'C'/'D' in testnet.
+* As having a length of 61 characters in its base58check-encoded form.
+
+When decoding the address using base58check, it will meet the following structure:
+
+* The first byte will be 0x21 for mainnet or 0x08 for testnet.
+* The next 20 bytes will be the public key authorised to stake.
+* The next 20 bytes will be the public key authorised to spend.
+
+When a P2CSS script is spent in a CoinStake transaction, only the same P2CSS script will be accepted in the ouputs of that transaction.
+
+==Rationale==
+
+OP_COINSTAKE allows to construct a completely new family of scripts, where different rules apply depending if the coins are being stake or spent.
+
+By using different public keys for each part of the script, systems will have restricted access to the range of actions they can perform with the coins.
+
+For example, a wallet in staking mode which owns the private key authorised by the script for staking can only perform the staking action and will not be able to move the coins to a different type of script or modify the public keys which protect the outputs.
+
+At the same time, a wallet which holds the private key authorised to spend, may freely move the coins to any other recipient.
+
+Given the fact that the wallet which stakes has the indispensable requirement of being available online, this would be the target of attackers. In the event that an adversary successfully attacks the system, not even obtaining the private keys could give access to the funds. The user could participate in the stake system safely, keeping the private keys that allow spending offline, out of the reach of attackers.
+
+==Backwards Compatibility==
+
+This change is proposed as a Hard Fork, breaking compatibility with older versions of the client.
+
+Historically new opcodes have been introduced through redefinitions of the OP_NOP* opcodes, causing old nodes to simply ignore the new opcode and continue evaluation of the script.
+
+Since in this proposal the new opcode is used in a conditional structure, reusing one of the OP_NOP* opcodes would make old nodes always take a false stack value, so only the script part corresponding to the spending public key would be evaluated.
+
+This would cause network splits between updated and non-updated nodes, completely breaking the compatibility with old nodes.
+
+That is why the introduction of the new consensus rules is proposed conditioned on a minimum amount of stake weight signalling the readiness:
+
+* Through the version bit 3
+* With a start time of May 1st, 2018
+* With an end time of May 1st, 2019
+
+==Reference Implementation==
+
+https://github.com/NAVCoin/navcoin-core/tree/v4.2.0-cold-staking
