@@ -1,6 +1,6 @@
 <pre>
   NPIP: 2
-  Layer: Consensus (hard fork)
+  Layer: Consensus (soft fork)
   Title: OP_COINSTAKE
   Author: alex v <alex@nav.community>
   Comments-Summary: No comments yet.
@@ -70,7 +70,7 @@ Given the fact that the wallet which stakes has the indispensable requirement of
 
 ==Backwards Compatibility==
 
-This change is proposed as a Hard Fork, breaking compatibility with older versions of the client.
+This change is proposed as a Soft Fork, breaking compatibility with older versions of the client once network signals readiness.
 
 Historically new opcodes have been introduced through redefinitions of the OP_NOP* opcodes, causing old nodes to simply ignore the new opcode and continue evaluation of the script.
 
