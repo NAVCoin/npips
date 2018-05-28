@@ -74,11 +74,11 @@ This change is proposed as a Hard Fork, breaking compatibility with older versio
 
 Historically new opcodes have been introduced through redefinitions of the OP_NOP* opcodes, causing old nodes to simply ignore the new opcode and continue evaluation of the script.
 
-Since in this proposal the new opcode is used in a conditional structure, reusing one of the OP_NOP* opcodes would make old nodes always take a false stack value, so only the script part corresponding to the spending public key would be evaluated.
+Since in this proposal the new opcode is used in a conditional structure, reusing one of the OP_NOP* opcodes would make old nodes to always take a false stack value, so only the script part corresponding to the spending public key would be evaluated and users following the new rules staking using the staking public key would see its blocks rejected.
 
-This would cause network splits between updated and non-updated nodes, completely breaking the compatibility with old nodes.
+The alternative is to use a completely new opcode, unknown to old nodes. This would make the transaction validation process to completely fail on old versions.
 
-That is why the introduction of the new consensus rules is proposed conditioned on a minimum amount of stake weight signalling the readiness:
+Given that both options cause network splits between updated and non updated nodes, both the activation of the client-side new features and the use of the new opcode in transaction scripts are proposed to be triggered after a minimum amount of staking weight signals the readiness:
 
 * Through the version bit 3
 * With a start time of May 1st, 2018
