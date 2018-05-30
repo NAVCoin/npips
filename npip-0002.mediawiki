@@ -5,7 +5,7 @@
   Author: alex v <alex@nav.community>
   Comments-Summary: No comments yet.
   Comments-URI: https://github.com/navcoin/npips/wiki/Comments:NPIP-0002
-  Status: Draft
+  Status: Final
   Type: Standards Track
   Created: 2018-05-28
 </pre>
