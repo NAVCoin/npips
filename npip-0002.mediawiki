@@ -86,4 +86,4 @@ Given that both options cause network splits between updated and non updated nod
 
 ==Reference Implementation==
 
-https://github.com/navcoin/navcoin-core/tree/v4.2.0-cold-staking
+https://github.com/aguycalled/navcoin-core/tree/cold-staking
