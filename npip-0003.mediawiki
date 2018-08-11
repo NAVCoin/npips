@@ -60,13 +60,13 @@ The size of this output is 11 bytes. At a rate of 1 Block per 30 Sec, 1051200 bl
 |250
 |62.5NAV
 |2h 5min
-|0,004625MB
+|0,04625MB
 |99.96%
 |-
 |500
 |125NAV
 |4h 10min
-|0,0023125MB
+|0,023125MB
 |99.98%
 |}
 
