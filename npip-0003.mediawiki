@@ -1,0 +1,87 @@
+<pre>
+  NPIP: 3
+  Layer: Consensus (soft fork)
+  Title: Community Fund Acummulation Chain Size reduction
+  Author: alex v <alex@nav.community>
+  Comments-Summary: No comments yet.
+  Comments-URI: https://github.com/navcoin/npips/wiki/Comments:NPIP-0003
+  Status: Draft
+  Type: Standards Track
+  Created: 2018-08-11
+</pre>
+
+==Abstract==
+
+This NPIP describes a technique to concentrate the accumulation of coins on the Community Fund using fewer transaction outputs.
+
+==Motivation==
+
+To decrease the size of the blockchain.
+
+==Specification==
+
+A new consensus parameter ''nBlockSpreadCFundAccumulation'' is set for each of the networks. ''nCommunityFundAmount'' represents the contribution per block to the Community Fund.
+
+Staking nodes will include an output with the block's contribution to the Community Fund only when the height of the block to be staked is a multiple of ''nBlockSpreadCFundAccumulation''.
+
+Validating nodes will check that only blocks whose height is a multiple of ''nBlockSpreadCFundAccumulation'' include a contribution to the Community Fund and that the contribution's value is equal to ''nCommunityFundAmount'' * ''nBlockSpreadCFundAccumulation''.
+
+==Rationale==
+
+With the current implementation, each block's coinstake transaction includes an extra output representing the block's contribution to the Community Fund.
+
+The size of this output is 11 bytes. At a rate of 1 Block per 30 Sec, 1051200 blocks are created per annum, meaning 11,563MB are unnecesarily added every year to the blockchain.
+
+{| class="wikitable"
+!|nBlockSpreadCFundAccumulation value
+!|Coins accumulated
+!|Every
+!|MB added per year
+!|Blockchain Size Reduction
+|-
+|1
+|0.25NAV
+|30sec
+|11,563MB
+|0%
+|-
+|10
+|2.5NAV
+|5min
+|1,156MB
+|90%
+|-
+|100
+|25NAV
+|50min
+|0,11563MB
+|99%
+|-
+|250
+|62.5NAV
+|2h 5min
+|0,004625MB
+|99.96%
+|-
+|500
+|125NAV
+|4h 10min
+|0,0023125MB
+|99.98%
+|}
+
+The reference implementation proposes a value of 500 blocks for ''nBlockSpreadCFundAccumulation''.
+
+==Backwards Compatibility==
+
+This change is proposed as a Soft Fork, breaking compatibility with older versions of the client once network signals readiness.
+
+The activation of the new consensus rules would be triggered after a minimum amount of staking weight signals the readiness:
+
+* Through the version bit 14
+* With a start time of May 1st, 2018
+* With an end time of May 1st, 2019
+
+==Reference Implementation==
+
+https://github.com/aguycalled/navcoin-core/tree/cfund-spread-accumulation
