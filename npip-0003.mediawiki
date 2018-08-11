@@ -37,7 +37,7 @@ The size of this output is 11 bytes. At a rate of 1 Block per 30 Sec, 1051200 bl
 !|Coins accumulated
 !|Every
 !|MB added per year
-!|Blockchain Size Reduction
+!|Reduction
 |-
 |1
 |0.25NAV
