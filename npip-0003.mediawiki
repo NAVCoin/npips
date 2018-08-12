@@ -69,8 +69,8 @@ The size of this output is 11 bytes. At a rate of 1 Block per 30 Sec, 1051200 bl
 |0,023125MB
 |99.8%
 |-
-|1000nav
-|205NAV
+|1000
+|250NAV
 |8h 20min
 |0,0115625MB
 |99.9%
