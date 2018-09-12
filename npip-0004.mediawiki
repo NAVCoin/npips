@@ -1,0 +1,74 @@
+<pre>
+  NPIP: 4
+  Layer: Consensus (soft fork)
+  Title: Static Block Reward
+  Author: craigmacgregor <craig@encrypt-s.com>
+  Comments-Summary: No comments yet.
+  Comments-URI: https://github.com/navcoin/npips/wiki/Comments:NPIP-0004
+  Status: Draft
+  Type: Standards Track
+  Created: 2018-08-13
+</pre>
+
+==Abstract==
+
+This NPIP describes changing the block reward from a percentage based calculation to a static reward.
+
+==Motivation==
+
+To increase security of the chain by requiring coins to be permanently online with their weight to claim full rewards.
+
+==Specification==
+
+Instead of calculating the block reward based on the coinage / year * 4%, change the block reward to a static amount of NAV per block.
+
+==Rationale==
+
+With the current implementation, coins can be offline for an indefinite period of time and then appear online to claim their full coinage based block rewards. The only incentive for stakers to remain online continuously is to claim the compounding rewards, around 0.01% per year which is negligible.
+
+Stakers perform two security functions on the network, creating new blocks and validating the blocks of other stakers. The second function of validating other stakers blocks is just as important if not more important than their primary function of creating new blocks.
+
+To incentivise stakers to remain online and provide continuous network weight, the block reward should not be based on coinage.
+
+
+{| class="wikitable"
+!|NAV Staking
+!|NAV Network Weight
+!|Reward
+!|Yearly NAV Reward
+!|Yearly inflation
+|-
+|10,000 NAV
+|20,000,000 NAV
+|4% coinage
+|408 NAV (4%)
+|816,169.86 NAV (1.6% p.a.)
+|-
+|10,000 NAV
+|20,000,000 NAV
+|2 NAV per block
+|1051.2 NAV (10.5%)
+|2,293,200 NAV (3.6% p.a.)
+|}
+
+The reference implementation proposes a static block reward of 2 NAV per block.
+
+The yearly inflation (including the 0.25 NAV per block to the community fund) would be fixed at 2,293,200 NAV which is currently equivalent to 3.6%. Since it's a static value, as a percentage of total supply this amount is exponentially decreasing into the future.
+
+The staking rewards are higher per user with the current levels of NAV used in staking. As more people stake, the rewards per user will reduce but the overall rewards issued will remain the same.
+
+Stakers who remain continuously online will earn at minimum 4% NAV rewards per year unless 90% or more of the NAV are committed to staking (currently around 25% are used).
+
+==Backwards Compatibility==
+
+This change is proposed as a Soft Fork, breaking compatibility with older versions of the client once network signals readiness.
+
+The activation of the new consensus rules would be triggered after a minimum amount of staking weight signals the readiness:
+
+* Through the version bit 15
+* With a start time of August 1st, 2018
+* With an end time of August 1st, 2019
+
+==Reference Implementation==
+
+https://github.com/craigmacgregor/navcoin-core/tree/static-reward
