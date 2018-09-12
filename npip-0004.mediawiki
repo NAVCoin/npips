@@ -7,7 +7,7 @@
   Comments-URI: https://github.com/navcoin/npips/wiki/Comments:NPIP-0004
   Status: Draft
   Type: Standards Track
-  Created: 2018-08-11
+  Created: 2018-08-13
 </pre>
 
 ==Abstract==
@@ -71,4 +71,4 @@ The activation of the new consensus rules would be triggered after a minimum amo
 
 ==Reference Implementation==
 
-(Pending)
+https://github.com/craigmacgregor/navcoin-core/tree/static-reward
