@@ -39,37 +39,37 @@ To retain the intended Community Fund contribution ratio of 1:4 the contribution
 !|Ratio
 !|Total Inflation
 |-
-|4% per annum
+|4% p.a.
 |25,000,000 NAV
-|1,000,000 NAV per annum
+|1,000,000 NAV p.a.
 |0.25 NAV per block
-|250,000 NAV per annum
-|1:4 (contribution:staking)
-|1.98% per annum
+|250,000 NAV p.a.
+|1:4
+|1.98% p.a.
 |-
-|4% per annum
+|4% p.a.
 |25,000,000 NAV
-|1,000,000 NAV per annum
+|1,000,000 NAV p.a.
 |0.5 NAV per block
-|500,000 NAV per annum
-|1:2 (contribution:staking)
-|2.38% per annum
+|500,000 NAV p.a.
+|1:2
+|2.38% p.a.
 |-
 |2 NAV per block
 |25,000,000 NAV
-|2,000,000 NAV per annum
+|2,000,000 NAV p.a.
 |0.25 NAV per block
-|250,000 NAV per annum
-|1:8 (contribution:staking)
-|3.57% per annum
+|250,000 NAV p.a.
+|1:8
+|3.57% p.a.
 |-
 |2 NAV per block
 |25,000,000 NAV
-|2,000,000 NAV per annum
+|2,000,000 NAV p.a.
 |0.5 NAV per block
-|500,000 NAV per annum
-|1:4 (contribution:staking)
-|3.96% per annum
+|500,000 NAV p.a.
+|1:4
+|3.96% p.a.
 |}
 
 Currently stakers earn 4% per annum and the network inflates at around 2% per annum. This means a stakers share of the total available NAV is increasing at around 2% per annum.
