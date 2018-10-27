@@ -1,0 +1,101 @@
+<pre>
+  NPIP: 5
+  Layer: Consensus (soft fork)
+  Title: Increase Community Fund Contribution
+  Author: craigmacgregor <craig@encrypt-s.com>
+  Comments-Summary: No comments yet.
+  Comments-URI: https://github.com/navcoin/npips/wiki/Comments:NPIP-0005
+  Status: Draft
+  Type: Standards Track
+  Created: 2018-10-27
+</pre>
+
+==Abstract==
+
+This NPIP describes increasing the Community Fund contribution from 0.25 NAV per block to 0.5 NAV per block.
+
+==Motivation==
+
+To increase the amount of NAV available for project funding and to retain the originally intended 1:4 contribution ratio when NIP004 is activated.
+
+==Specification==
+
+Adding the new parameter `nCommunityFundAmountV2` equal to 0.5 NAV and implementing it as the contribution value if the soft fork activates.
+
+==Rationale==
+
+When the Community Fund was originally proposed, the idea was to reduce the staking rewards from 5% to 4% and contribute 0.25 NAV per block to the Community Fund. The chosen amount of 0.25 NAV was roughly equal to 1% of newly minted coins, at the rate the network was staking at the time.
+
+NPIP004 proposes moving to a static block reward of 2 NAV per block instead of using a coinage * percentage based calculation to increase network security and incentivise nodes to secure the blockchain. You can read the [https://github.com/NAVCoin/npips/blob/master/npip-0004.mediawiki full rationale of NPIP004 here].
+
+To retain the intended Community Fund contribution ratio of 1:4 the contribution amount should increase from 0.25 NAV to 0.5 NAV per block.
+
+{| class="wikitable"
+!|Staking method
+!|Coins Staking
+!|Staked NAV
+!|Contribution amount
+!|Contributed NAV
+!|Ratio
+!|Total Inflation
+|-
+|4% per annum
+|25,000,000 NAV
+|1,000,000 NAV per annum
+|0.25 NAV per block
+|250,000 NAV per annum
+|1:4 (contribution:staking)
+|1.98% per annum
+|-
+|4% per annum
+|25,000,000 NAV
+|1,000,000 NAV per annum
+|0.5 NAV per block
+|500,000 NAV per annum
+|1:2 (contribution:staking)
+|2.38% per annum
+|-
+|2 NAV per block
+|25,000,000 NAV
+|2,000,000 NAV per annum
+|0.25 NAV per block
+|250,000 NAV per annum
+|1:8 (contribution:staking)
+|3.57% per annum
+|-
+|2 NAV per block
+|25,000,000 NAV
+|2,000,000 NAV per annum
+|0.5 NAV per block
+|500,000 NAV per annum
+|1:4 (contribution:staking)
+|3.96% per annum
+|}
+
+Currently stakers earn 4% per annum and the network inflates at around 2% per annum. This means a stakers share of the total available NAV is increasing at around 2% per annum.
+
+If NPIP005 activates before NPIP004 has been activated, stakers will earn 4% per annum and the network inflates at around 2.38% per annum. This means s stakers share of the total available NAV is increasing at around 1.62% per annum.
+
+Afer NPIP004 and NPIP005 are activated the overall inflation amount of the network remains under 4% per annum which is still an acceptably low inflation amount. Stakers will earn somewhere between 6% and 10% per annum depending on the number of coins staking. This means a stakers share of the total available NAV increases between around 2% and 6% per annum.
+
+In all scenarios, stakers are earning NAV faster than the network inflates. Their coins are never being devlaued against the rest of the network.
+
+The reference implementation proposes an increase of the Community Fund contribution to 0.5 NAV per block and should be considered in parallel to NIP004 which changes the staking reward to 2 NAV per block.
+
+This will double the amount of NAV available for community funded proposals. Not only does it mean that when static rewards are enabled the ratio is retained, but it also should mean there are more proposals being worked on and completed.
+
+The benefits to the network of having more funding available for proposals far outweighs the negative impact due to the minor increase in inflation (0.38% per annum) incurred by doubling the Community Fund contribution amount.
+
+==Backwards Compatibility==
+
+This change is proposed as a Soft Fork, breaking compatibility with older versions of the client once network signals readiness.
+
+The activation of the new consensus rules would be triggered after a minimum amount of staking weight signals the readiness:
+
+* Through the version bit 16
+* With a start time of August 1st, 2018
+* With an end time of August 1st, 2019
+
+==Reference Implementation==
+
+https://github.com/aguycalled/navcoin-core/pull/12
