@@ -76,7 +76,7 @@ Currently stakers earn 4% per annum and the network inflates at around 2% per an
 
 If NPIP005 activates before NPIP004 has been activated, stakers will earn 4% per annum and the network inflates at around 2.38% per annum. This means a stakers share of the total available NAV is increasing at around 1.62% per annum.
 
-Afer NPIP004 and NPIP005 are activated the overall inflation amount of the network remains under 4% per annum which is still an acceptably low inflation amount. Stakers will earn somewhere between 6% and 10% per annum depending on the number of coins staking. This means a stakers share of the total available NAV increases between around 2% and 6% per annum.
+After NPIP004 and NPIP005 are activated the overall inflation amount of the network remains under 4% per annum which is still an acceptably low inflation amount. Stakers will earn somewhere between 6% and 10% per annum depending on the number of coins staking. This means a stakers share of the total available NAV increases between around 2% and 6% per annum.
 
 In all scenarios, stakers are earning NAV faster than the network inflates. Their coins are never being devlaued against the rest of the network.
 
