@@ -50,9 +50,9 @@ A new address type 'Cold Staking Address' is defined:
 
 When decoding the address using base58check, it will meet the following structure:
 
-* The first byte will be 0x21 for mainnet or 0x08 for testnet.
-* The next 20 bytes will be the public key authorised to stake.
-* The next 20 bytes will be the public key authorised to spend.
+* The first byte will be 21 for mainnet or 08 for testnet.
+* The next 20 bytes will be the hash of the public key authorised to stake.
+* The next 20 bytes will be the hash of the public key authorised to spend.
 
 When a P2CSS script is spent in a CoinStake transaction, only the same P2CSS script will be accepted in the ouputs of that transaction.
 
