@@ -32,11 +32,21 @@ A CoinStake transaction is defined as having:
 
 A new standard transaction type 'Pay to Cold Staking Script (P2CSS)' is defined:
 
-    IF OP_COINSTAKE
+    OP_COINSTAKE OP_IF
+      <BRANCH 1>
+    OP_ELSE
+      <BRANCH 2>
+    OP_ENDIF
+
+This can be read as `Branch 1` being executed when the output is spent in a CoinStake transaction while `Branch 2` is executed for every other transaction case.
+
+A common practical use case would be:
+
+    OP_COINSTAKE OP_IF
       OP_DUP OP_HASH160 <pubKeyHash1> OP_EQUALVERIFY OP_CHECKSIG
-    ELSE
+    OP_ELSE
       OP_DUP OP_HASH160 <pubKeyHash2> OP_EQUALVERIFY OP_CHECKSIG
-    ENDIF
+    OP_ENDIF
 
 Where:
 
@@ -55,6 +65,11 @@ When decoding the address using base58check, it will meet the following structur
 * The next 20 bytes will be the hash of the public key authorised to spend.
 
 When a P2CSS script is spent in a CoinStake transaction, only the same P2CSS script will be accepted in the ouputs of that transaction.
+
+When a P2CSS script is described in the output of a RPC command, it will be categorised with the type "cold_staking". The addresses will be shown in the following order:
+
+* Staking address
+* Spending address
 
 ==Rationale==
 
